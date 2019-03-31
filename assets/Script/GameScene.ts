@@ -59,7 +59,6 @@ export default class GameScene extends cc.Component {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     }
 
-    
 
     update(dt: number) {   
         let ms = dt;
@@ -75,9 +74,11 @@ export default class GameScene extends cc.Component {
             this.runBehaviorTree(ms); 
         }
     }
-
+    /**
+     * 执行行为树
+     * @param ms 
+     */
     runBehaviorTree(ms: number) {
-        
         this.master.getComponent("BehaviorTree").tick(null, ms);
     }
 

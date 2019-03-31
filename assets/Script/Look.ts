@@ -22,6 +22,7 @@ export default class NewClass extends cc.Component {
     }
 
     tick (tick,b3,treeNode){
+        
         let radio = treeNode.parameter.radio;
         let playerX = this.playerCtl.getPosition().x;
         if(Math.abs(playerX - this.node.x) < radio) {
