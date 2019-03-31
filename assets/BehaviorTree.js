@@ -87,8 +87,8 @@ this.tree = tree;
 this.blackboard = new b3.Blackboard();
 this.b3 = b3;
 },
-tick: function(target, ms){
+tick: function(target){
 let t = {};
 if(target != undefined){t = target;}
-this.tree.tick(t,this.blackboard, ms)
+this.tree.tick(t,this.blackboard)
 }});

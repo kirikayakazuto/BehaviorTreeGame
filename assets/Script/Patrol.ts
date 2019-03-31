@@ -30,7 +30,7 @@ export default class NewClass extends cc.Component {
      */
     tick (tick,b3,treeNode){
         let areaSize = treeNode.parameter.areaSize;
-        let dt = tick.dt;
+        let dt = tick.target.dt;
         this.node.x += dt * this.speed;
         this.moveSize += Math.abs(dt * this.speed)
         if(this.moveSize >= areaSize) {

@@ -27,7 +27,7 @@ export default class NewClass extends cc.Component {
      * @param treeNode 
      */
     tick (tick,b3,treeNode){
-        let dt = tick.dt;
+        let dt = tick.target.dt;
         console.log(dt);
         if(this.node.getChildByName("arms").y <= -40) {
             this.node.getChildByName("arms").y = 40;

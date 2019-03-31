@@ -601,7 +601,6 @@ var p = Tick.prototype;
         // updated during the tick signal
         this._openNodes  = [];
         this._nodeCount  = 0;
-        this.dt = 0;
     }
 
     /**
@@ -986,7 +985,6 @@ var p = BehaviorTree.prototype;
         tick.target     = target;
         tick.blackboard = blackboard;
         tick.tree       = this;
-        tick.dt         = dt;
 
         /* TICK NODE */
         var state = this.root._execute(tick);

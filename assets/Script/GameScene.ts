@@ -79,7 +79,10 @@ export default class GameScene extends cc.Component {
      * @param ms 
      */
     runBehaviorTree(ms: number) {
-        this.master.getComponent("BehaviorTree").tick(null, ms);
+        let target = {
+            dt: ms,
+        };
+        this.master.getComponent("BehaviorTree").tick(target);
     }
 
 
