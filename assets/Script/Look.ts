@@ -43,7 +43,7 @@ export default class NewClass extends cc.Component {
     }
 
     setTips(str: string) {
-        this.node.getChildByName("str").getComponent(cc.Label).string = str;
+        // this.node.getChildByName("str").getComponent(cc.Label).string = str;
     }
 
     // update (dt) {}

@@ -1,5 +1,6 @@
 import PlayerCtl from "./PlayerCtl";
 import { PlayerDir } from "./GameInterface";
+import{GameStatus} from "./GameInterface"
 const {ccclass, property} = cc._decorator;
 
 /**
@@ -28,6 +29,18 @@ export default class GameScene extends cc.Component {
 
     start () {
         this.playerCtl.init(this);
+        this.openCollisionManager();
+    }
+
+    openCollisionManager() {
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        // manager.enabledDebugDraw = true;
+    }
+    closeCollisionManager() {
+        var manager = cc.director.getCollisionManager();
+        // manager.enabledDebugDraw = false;
+        manager.enabled = false;
     }
 
     onKeyDown(event: any) {
@@ -40,6 +53,12 @@ export default class GameScene extends cc.Component {
             case cc.KEY.d:
                 this.playerCtl.setDirection(PlayerDir.right);
             break;
+            case cc.KEY.j:
+                this.playerCtl.setArmsState(GameStatus.RUNNING);
+            break;
+            case cc.KEY.k:
+                this.playerCtl.setShieldState(GameStatus.RUNNING);
+            break;
         }
     }
     onKeyUp(event: any) {
@@ -50,6 +69,13 @@ export default class GameScene extends cc.Component {
             case cc.KEY.d:
                 this.playerCtl.setDirection(PlayerDir.stop);
             break;
+
+            case cc.KEY.j:
+                this.playerCtl.setArmsState(GameStatus.stop);
+            break;
+            case cc.KEY.k:
+                this.playerCtl.setShieldState(GameStatus.stop);
+            break; 
             
         }
     }
