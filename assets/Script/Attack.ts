@@ -13,11 +13,9 @@ export default class NewClass extends cc.Component {
     }
 
     enter (tick,b3,treeNode){
-        console.log("enter");
     }
 
     open (tick,b3,treeNode){
-        console.log("open");
         this.node.getChildByName("arms").active = true;
     }
     /**
@@ -28,7 +26,6 @@ export default class NewClass extends cc.Component {
      */
     tick (tick,b3,treeNode){
         let dt = tick.target.dt;
-        console.log(dt);
         if(this.node.getChildByName("arms").y <= -40) {
             this.node.getChildByName("arms").y = 40;
             return b3.SUCCESS;
@@ -39,12 +36,10 @@ export default class NewClass extends cc.Component {
     }
 
     close (tick,b3,treeNode){
-        console.log("close");
         this.node.getChildByName("arms").active = false;
     }
 
     exit (tick,b3,treeNode){
-        console.log("exit");
     }
 
     // update (dt) {}

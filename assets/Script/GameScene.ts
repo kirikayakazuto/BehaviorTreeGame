@@ -1,4 +1,5 @@
 import PlayerCtl from "./PlayerCtl";
+import MonsterCtl from "./MonsterCtl"
 import { PlayerDir } from "./GameInterface";
 import{GameStatus} from "./GameInterface"
 const {ccclass, property} = cc._decorator;
@@ -13,8 +14,8 @@ export default class GameScene extends cc.Component {
     @property(PlayerCtl)
     playerCtl: PlayerCtl = null;
 
-    @property(cc.Node)
-    master: cc.Node = null;
+    @property(MonsterCtl)
+    monsterCtl: MonsterCtl = null;
 
     stepInterval = 60;
     restRunningSecond = 0;
@@ -29,19 +30,23 @@ export default class GameScene extends cc.Component {
 
     start () {
         this.playerCtl.init(this);
+        this.monsterCtl.init(this);
         this.openCollisionManager();
     }
 
-    openCollisionManager() {
-        var manager = cc.director.getCollisionManager();
-        manager.enabled = true;
-        // manager.enabledDebugDraw = true;
+    /**
+     * ----------------------------- 获取player的信息 -----------------------------
+     */
+    getPlayer() {
+        return this.playerCtl;
     }
-    closeCollisionManager() {
-        var manager = cc.director.getCollisionManager();
-        // manager.enabledDebugDraw = false;
-        manager.enabled = false;
+
+    getMonster() {
+        return this.monsterCtl;
     }
+
+
+    
 
     onKeyDown(event: any) {
         switch(event.keyCode) {
@@ -71,10 +76,10 @@ export default class GameScene extends cc.Component {
             break;
 
             case cc.KEY.j:
-                this.playerCtl.setArmsState(GameStatus.stop);
+                this.playerCtl.setArmsState(GameStatus.STOP);
             break;
             case cc.KEY.k:
-                this.playerCtl.setShieldState(GameStatus.stop);
+                this.playerCtl.setShieldState(GameStatus.STOP);
             break; 
             
         }
@@ -108,7 +113,19 @@ export default class GameScene extends cc.Component {
         let target = {
             dt: ms,
         };
-        this.master.getComponent("BehaviorTree").tick(target);
+        this.monsterCtl.getComponent("BehaviorTree").tick(target);
+    }
+
+
+
+
+    openCollisionManager() {
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+    }
+    closeCollisionManager() {
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = false;
     }
 
 

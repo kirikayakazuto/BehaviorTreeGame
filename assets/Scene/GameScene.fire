@@ -69,10 +69,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 34
+        "__id__": 36
       },
       {
-        "__id__": 35
+        "__id__": 37
       }
     ],
     "_prefab": null,
@@ -670,6 +670,12 @@
       },
       {
         "__id__": 33
+      },
+      {
+        "__id__": 34
+      },
+      {
+        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -718,7 +724,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 22
@@ -819,7 +825,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 25
@@ -1037,13 +1043,28 @@
     "node": {
       "__id__": 20
     },
-    "_enabled": true,
-    "playerCtl": {
-      "__id__": 19
-    }
+    "_enabled": true
   },
   {
     "__type__": "e48b2u5rW1OyageeYezCyHk",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 20
+    },
+    "_enabled": true
+  },
+  {
+    "__type__": "f3e68vrPzVMRZplNB+WUrmo",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 20
+    },
+    "_enabled": true
+  },
+  {
+    "__type__": "a7fb1KUKPpIaqunSeTYsUe4",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1078,8 +1099,8 @@
     "playerCtl": {
       "__id__": 19
     },
-    "master": {
-      "__id__": 20
+    "monsterCtl": {
+      "__id__": 35
     }
   }
 ]

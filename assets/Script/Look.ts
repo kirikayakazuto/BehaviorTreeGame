@@ -1,11 +1,8 @@
-import PlayerCtl from "./PlayerCtl"
+import MonsterCtl from "./MonsterCtl"
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
-
-    @property(PlayerCtl)
-    playerCtl: PlayerCtl = null;
 
     // onLoad () {}
 
@@ -22,14 +19,17 @@ export default class NewClass extends cc.Component {
     }
 
     tick (tick,b3,treeNode){
-        
         let radio = treeNode.parameter.radio;
-        let playerX = this.playerCtl.getPosition().x;
+        let playerX = this.getComponent(MonsterCtl).getPlayerPostion().x;
         if(Math.abs(playerX - this.node.x) < radio) {
-            this.setTips("发现你啦!");
-            return b3.SUCCESS;
+            // 判断是不是 看见了
+            let lookTurn = playerX - this.node.x > 0 ?  1 : -1;
+            if(lookTurn == this.node.scaleX) {
+                return b3.SUCCESS;
+            }
+            return b3.FAILURE;
+            
         }else {
-            this.setTips("敌人");
             return b3.FAILURE;
         }
     }
@@ -42,9 +42,6 @@ export default class NewClass extends cc.Component {
         
     }
 
-    setTips(str: string) {
-        // this.node.getChildByName("str").getComponent(cc.Label).string = str;
-    }
 
     // update (dt) {}
 }

@@ -36,6 +36,7 @@ export default class NewClass extends cc.Component {
         if(this.moveSize >= areaSize) {
             this.moveSize = 0;
             this.speed = -this.speed;
+            this.node.scaleX = -this.node.scaleX;
         }
         return b3.SUCCESS;
         
